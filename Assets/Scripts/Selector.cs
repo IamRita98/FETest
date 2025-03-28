@@ -249,12 +249,6 @@ public class Selector : MonoBehaviour
     {
         Debug.Log("Player phase ended");
         //Make each enemyChar activatable again & Clear the activated List
-        foreach (GameObject go in enemyPhase.allEnemiesOnMap)
-        {
-            Character tempCha = go.GetComponent<Character>();
-            tempCha.hasActedThisTurn = false;
-            enemyPhase.enemiesAlreadyActivated.Clear();
-        }
         enemyPhase.StartEnemyPhase();
         isPlayerPhase = false;
         enemyPhase.isEnemyPhase = true;

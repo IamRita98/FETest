@@ -245,9 +245,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dd99768caec9b449c0ea0d293cfd30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathFound: []
   start: {fileID: 2498870318899360604, guid: 859327ba4fecf034592030464732028c, type: 3}
   end: {fileID: 5004987403739459461, guid: e74793bce9b2f544dab6d9188eb469da, type: 3}
   pathP: {fileID: 3339165681082880686, guid: 010f66eabd70fcc469a766ab9049b273, type: 3}
+  startSearch: 0
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,6 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allEnemiesOnMap: []
   enemiesAlreadyActivated: []
+  isEnemyPhase: 0
 --- !u!1 &740083376
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,6 +773,7 @@ MonoBehaviour:
   goHeldBySelector: {fileID: 0}
   playerCharsAlreadyActivated: []
   allPlayersOnMap: []
+  isPlayerPhase: 0
 --- !u!50 &1762754896
 Rigidbody2D:
   serializedVersion: 4
@@ -805,6 +809,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3401515434241040374, guid: 2f990f6a1a5459b4a964003770abe09a, type: 3}
+      propertyPath: str
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3660141044267443448, guid: 2f990f6a1a5459b4a964003770abe09a, type: 3}
       propertyPath: m_Name
       value: Enemy

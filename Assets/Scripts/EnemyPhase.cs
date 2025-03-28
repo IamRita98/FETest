@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyPhase : MonoBehaviour
@@ -25,7 +26,7 @@ public class EnemyPhase : MonoBehaviour
         pathfinding = Camera.main.GetComponent<Pathfinding>();
     }
 
-    public void StartEnemyPhase()
+    private void Start()
     {
         foreach(GameObject go in allEnemiesOnMap)
         {
@@ -33,11 +34,20 @@ public class EnemyPhase : MonoBehaviour
         }
     }
 
+    public void StartEnemyPhase()
+    {
+        foreach (GameObject go in enemiesAlreadyActivated)
+        {
+            enemiesNotYetActivated.Add(go);
+        }
+        enemiesAlreadyActivated.Clear();
+    }
+
     private void Update()
     {
         if (!isEnemyPhase) return;
 
-        if (enemiesNotYetActivated.Count == 0)
+        if (enemiesAlreadyActivated.Count == allEnemiesOnMap.Count)
         {
             EndEnemyPhase();
         }
@@ -90,6 +100,7 @@ public class EnemyPhase : MonoBehaviour
         //Put enemy into activated enemies list
         enemiesAlreadyActivated.Add(currentEnemy);
         enemiesNotYetActivated.Remove(currentEnemy);
+
         //Set nearest player and current enemy to null
         nearestPlayer = null;
         currentEnemy = null;
